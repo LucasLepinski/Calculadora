@@ -1,6 +1,4 @@
-
 const prompt = require('prompt-sync')();
-
 
 function exibirMenu() {
     console.log(`
@@ -9,7 +7,7 @@ function exibirMenu() {
     (-.-)
     (    > Menu
   o_(")(")
-
+  
     1. Adição
     2. Subtração                   
     3. Multiplicação                
@@ -36,64 +34,82 @@ function exibirMenu() {
         case "5":
             calculoPorcentagem();
             break;
-        
+        case "6":
+            console.log("Saindo...");
+            return;
+        default:
             console.log("Opção inválida, tente novamente.");
-            exibirMenu(); 
+            exibirMenu();
             return;
     }
-}
-
+   }
 
 function calculoSoma() {
     const num1 = parseFloat(prompt('Digite o primeiro número: '));
-    const num2 = parseFloat(prompt('Digite o segundo para somar: '));
-    const resultado = num1 + num2;
-    console.log(`Resultado: ${resultado}`);
-    exibirMenu(); // Volta ao menu principal
-}
+    const num2 = parseFloat(prompt('Digite o segundo número para somar: '));
 
+    if (isNaN(num1) || isNaN(num2)) {
+        console.log("Por favor, digite números válidos.");
+    } else {
+        const resultado = num1 + num2;
+        console.log(`Resultado: ${resultado}`);
+    }
+    exibirMenu(); 
+   }
 
 function calculoSubtracao() {
     const num1 = parseFloat(prompt('Digite o primeiro número: '));
-    const num2 = parseFloat(prompt('Digite o segundo para subtrair: '));
-    const resultado = num1 - num2;
-    console.log(`Resultado: ${resultado}`);
-    exibirMenu(); 
-}
+    const num2 = parseFloat(prompt('Digite o segundo número para subtrair: '));
 
+    if (isNaN(num1) || isNaN(num2)) {
+        console.log("Por favor, digite números válidos.");
+    } else {
+        const resultado = num1 - num2;
+        console.log(`Resultado: ${resultado}`);
+    }
+    exibirMenu();
+   }
 
 function calculoMultiplicacao() {
     const num1 = parseFloat(prompt('Digite o primeiro número: '));
-    const num2 = parseFloat(prompt('Digite o segundo para multiplicar: '));
-    const resultado = num1 * num2;
-    console.log(` Resultado: ${resultado} `);
-    exibirMenu(); 
-}
+    const num2 = parseFloat(prompt('Digite o segundo número para multiplicar: '));
 
+    if (isNaN(num1) || isNaN(num2)) {
+        console.log("Por favor, digite números válidos.");
+    } else {
+        const resultado = num1 * num2;
+        console.log(`Resultado: ${resultado}`);
+    }
+    exibirMenu();
+   }
 
 function calculoDivisao() {
     const num1 = parseFloat(prompt('Digite o primeiro número: '));
     const num2 = parseFloat(prompt('Digite o segundo número para dividir: '));
 
-    if (num2 === 0) {
+    if (isNaN(num1) || isNaN(num2)) {
+        console.log("Por favor, digite números válidos.");
+    } else if (num2 === 0) {
         console.log("Não é possível dividir por zero.");
-        exibirMenu(); 
     } else {
         const resultado = num1 / num2;
         console.log(`Resultado: ${resultado}`);
-        exibirMenu(); 
     }
-}
-
+    exibirMenu();
+   }
 
 function calculoPorcentagem() {
     const num = parseFloat(prompt('Digite o número: '));
     const percentual = parseFloat(prompt('Digite a porcentagem: '));
 
-    const resultado = (num * percentual) / 100;
-    console.log(`Resultado: ${resultado}`);
-    exibirMenu(); 
-}
+    if (isNaN(num) || isNaN(percentual)) {
+        console.log("Por favor, digite números válidos.");
+    } else {
+        const resultado = (num * percentual) / 100;
+        console.log(`Resultado: ${resultado}`);
+    }
+    exibirMenu();
+   }
 
+  exibirMenu();
 
-exibirMenu(); 
